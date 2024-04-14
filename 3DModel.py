@@ -61,7 +61,6 @@ pyramid = [[(-1, -1, -1), (-1, -1, 1)],
            [(1, -1, 1), (0, 1, 0)],
            [(1, -1, -1), (0, 1, 0)]]
 
-extra_credit = [[(0, 0, 0), (1, 1, 1)]] # TODO: (extra credit) create your own wireframe
 
 guide_axes = [[(-0.75, 0, 0), (0.75, 0, 0)],
               [(0, -0.75, 0), (0, 0.75, 0)],
@@ -131,7 +130,6 @@ def perspective(d):
     x = np.eye(4)
     x[2] = [0, 0, 0, 0]
     x[3] = [0, 0, (-1)/d, 1]
-    # TODO: fill in this function and change its return value
     return x
 
 def hom_rotate_x(theta):
@@ -148,7 +146,6 @@ def hom_rotate_x(theta):
     the matrix which rotates THETA around the x-axis, in homogeneous coordinates
 
     """
-    # TODO: fill in this function and change its return value
 
     x = np.eye(4)
     
@@ -170,7 +167,6 @@ def hom_rotate_y(theta):
     the matrix which rotates THETA around the y-axis, in homogeneous coordinates
 
     """
-    # TODO: fill in this function and change its return value
     x = np.eye(4)
     x[0] = [np.cos(theta), 0, np.sin(theta), 0]
     x[2] = [-(np.sin(theta)), 0, np.cos(theta), 0]
@@ -190,7 +186,6 @@ def hom_rotate_z(theta):
     the matrix which rotates THETA around the z-axis, in homogeneous coordinates
 
     """
-    # TODO: fill in this function and change its return value
     x = np.eye(4)
     x[0] = [np.cos(theta), -(np.sin(theta)), 0, 0]
     x[1] = [np.sin(theta), np.cos(theta), 0, 0]
@@ -212,7 +207,6 @@ def translate(x, y, z):
     the matrix which translates by the vector np.array([x, y, z])
 
     """
-    # TODO: fill in this function and change its return value
     a = np.eye(4)
     a[0] = [1, 0, 0, x]
     a[1] = [0, 1, 0, y]
@@ -234,9 +228,7 @@ def full_transform_matrix():
     fixed when rotating, even after translation
 
     """
-    p = global_params # you will need to use this in your implementation
-    # TODO: fill in this function and change its return value
-    # NOTE: you MUST use the function np.linalg.multi_dot
+    p = global_params #  need to use this in implementation
     multiplication = np.linalg.multi_dot([ 
     perspective(p['d']),
     translate(p['tx'], p['ty'], p['tz']),
@@ -267,7 +259,6 @@ def matrix_to_projection(m):
     assert(m.shape[0] == 4)                           # you may assume m has four rows
     assert(m.shape[1] % 2 == 0)                       # and an even number of columns
     # assert(np.allclose(m[2], np.zeros(m.shape[1]))) # and that its third row is all zeros
-    # TODO: fill in this function and change its return value
     arr = []
     arr2 = []
     for i in range(0, len(m[0])):
